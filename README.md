@@ -20,21 +20,24 @@ As part of an interview process, I was given the following request.
 >   - What is the best/worst part of your solution?  
 >   - Why would automating a task like this be helpful?  
 
-My solution uses Puppet and Vagrant to provision a CentOS 7 VM. Just run these
-commands and point your browser to [localhost:8888]() to see it in action:
+My solution uses git, Puppet, and Vagrant to provision a CentOS 7 VM. Just run
+these commands and point your browser to [localhost:8888]() to see it in
+action:
 
     git clone git@github.com:wachr/nwea-challenge.git
     cd nwea-challenge && vagrant up
 
-Note, the above requires that you have Vagrant installed. If you don't have
-Vagrant, but you have a CentOS 7 machine available you can run `provision.sh`
-as root and to install Puppet and then apply Puppet manifest file manually.
+Note, the above requires that you have Vagrant and git installed. If you don't
+have Vagrant, but you have a CentOS 7 machine available you can run
+`provision.sh` as root and to install Puppet and then apply Puppet manifest
+file manually. Puppet will install git and nginx, clone NWEA's quiz repo to
+`/usr/share/nginx/site` and have nginx serve it on port 8888.
 
-    git clone git@github.com:wachr/nwea-challenge.git
-    cd nwea-challenge
+    wget https://raw.githubusercontent.com/wachr/nwea-challenge/master/provision.sh
     chmod +x provision.sh
     sudo provision.sh
-    puppet apply manifests/nwea-tech-quiz.pp
+    wget https://raw.githubusercontent.com/wachr/nwea-challenge/master/manifests/nwea-tech-quiz.pp
+    sudo puppet apply manifests/nwea-tech-quiz.pp
 
 [myGithub]: https://github.com/wachr
 [0]: https://github.com/nwea-techops/tech_quiz

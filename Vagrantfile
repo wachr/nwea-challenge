@@ -15,8 +15,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision :shell, path: 'provision.sh', privileged: true
 
   config.vm.provision :puppet do |puppet|
-    puppet.manifests_path = "manifests"
-    puppet.manifest_file = "nwea-tech-quiz.pp"
+    puppet.module_path = "manifests"
   end
 
 end

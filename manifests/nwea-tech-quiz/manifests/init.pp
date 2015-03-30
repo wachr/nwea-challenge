@@ -11,4 +11,11 @@ class nwea-tech-quiz (
   class { 'nwea-tech-quiz::serve-content' :
     content => $content_root,
   }
+
+  #class { 'firewall':
+    #ensure => 'running',
+  #}
+
+  include nwea-tech-quiz::fw
+
 }
